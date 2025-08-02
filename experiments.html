@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VISIONFLUX | Experiments</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, sans-serif;
+      }
+
+      body {
+        background: #080808;
+        color: #fff;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background: #111;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        background: linear-gradient(to right, #0ff, #f0f);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #ccc;
+        transition: 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #0ff;
+      }
+
+      .blob {
+        position: fixed;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 0, 255, 0.25),
+          transparent
+        );
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+        mix-blend-mode: overlay;
+        transition: transform 0.2s ease;
+      }
+
+      .ripple {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: rgba(0, 255, 255, 0.3);
+        transform: scale(0);
+        pointer-events: none;
+        z-index: 999;
+      }
+
+      .animate {
+        animation: rippleAnim 0.6s linear;
+      }
+
+      @keyframes rippleAnim {
+        to {
+          transform: scale(6);
+          opacity: 0;
+        }
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin: 60px 0 30px;
+        background: linear-gradient(to right, #0ff, #f0f);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        max-width: 1200px;
+        margin: 0 auto 60px;
+        padding: 0 20px;
+      }
+
+      .card {
+        background: #111;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.4s ease;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+        transform-style: preserve-3d;
+        perspective: 1000px;
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+      }
+
+      .card img {
+        width: 100%;
+        display: block;
+        height: 180px;
+        object-fit: cover;
+      }
+
+      .card h3 {
+        padding: 20px;
+        font-size: 1.3rem;
+        color: #0ff;
+      }
+
+      @media (max-width: 768px) {
+        .section-title {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating Blob -->
+    <div class="blob" id="blob"></div>
+
+    <!-- Ripple Element -->
+    <div class="ripple" id="ripple"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">VISIONFLUX</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="experiments.html">Experiments</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Heading -->
+    <h2 class="section-title">Our Experiments</h2>
+
+    <!-- Grid -->
+    <div class="grid">
+      <div
+        class="card"
+        onmousemove="hoverEffect(event)"
+        onmouseleave="resetEffect(event)"
+      >
+        <img src="visionbot.jfif" alt="VisionBot" />
+        <h3>VisionBot</h3>
+      </div>
+      <div
+        class="card"
+        onmousemove="hoverEffect(event)"
+        onmouseleave="resetEffect(event)"
+      >
+        <img src="pixelreactor.jfif" alt="Pixel Reactor" />
+        <h3>Pixel Reactor</h3>
+      </div>
+      <div
+        class="card"
+        onmousemove="hoverEffect(event)"
+        onmouseleave="resetEffect(event)"
+      >
+        <img src="codenebula.png" alt="CodeNebula" />
+        <h3>CodeNebula</h3>
+      </div>
+      <div
+        class="card"
+        onmousemove="hoverEffect(event)"
+        onmouseleave="resetEffect(event)"
+      >
+        <img src="data morph.png" alt="Data Morph" />
+        <h3>Data Morph</h3>
+      </div>
+      <div
+        class="card"
+        onmousemove="hoverEffect(event)"
+        onmouseleave="resetEffect(event)"
+      >
+        <img src="aethegrid.jfif" alt="Aether Grid" />
+        <h3>Aether Grid</h3>
+      </div>
+      <div
+        class="card"
+        onmousemove="hoverEffect(event)"
+        onmouseleave="resetEffect(event)"
+      >
+        <img src="flowfield.png" alt="Flow Field" />
+        <h3>Flow Field</h3>
+      </div>
+    </div>
+
+    <!-- JS -->
+    <script>
+      // Blob follow
+      const blob = document.getElementById("blob");
+      document.addEventListener("mousemove", (e) => {
+        blob.style.transform = `translate(${e.clientX - 100}px, ${
+          e.clientY - 100
+        }px)`;
+      });
+
+      // Ripple
+      const ripple = document.getElementById("ripple");
+      document.addEventListener("click", (e) => {
+        ripple.style.left = e.clientX + "px";
+        ripple.style.top = e.clientY + "px";
+        ripple.classList.remove("animate");
+        void ripple.offsetWidth;
+        ripple.classList.add("animate");
+      });
+
+      // 3D tilt hover
+      function hoverEffect(e) {
+        const card = e.currentTarget;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * 10;
+        const rotateY = ((x - centerX) / centerX) * -10;
+        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+      }
+
+      function resetEffect(e) {
+        e.currentTarget.style.transform = "rotateX(0) rotateY(0) scale(1)";
+      }
+    </script>
+  </body>
+</html>

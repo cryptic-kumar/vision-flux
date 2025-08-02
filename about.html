@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VISIONFLUX | About</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, sans-serif;
+      }
+
+      body {
+        background: #0a0a0a;
+        color: #fff;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background: #111;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        background: linear-gradient(to right, #0ff, #a0f);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #ccc;
+        transition: 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #0ff;
+      }
+
+      .blob {
+        position: fixed;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(
+          circle,
+          rgba(0, 255, 255, 0.25),
+          transparent
+        );
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+        mix-blend-mode: overlay;
+        transition: transform 0.2s ease;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 80px auto;
+        padding: 0 20px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .container h1 {
+        font-size: 3rem;
+        text-align: center;
+        background: linear-gradient(to right, #00ffff, #aa00ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 10px;
+      }
+
+      .container p {
+        text-align: center;
+        color: #ccc;
+        font-size: 18px;
+        margin-bottom: 60px;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .card {
+        background: #111;
+        padding: 30px;
+        border-radius: 15px;
+        border: 1px solid rgba(0, 255, 255, 0.2);
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+        transition: 0.3s ease;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 0 20px #0ff, 0 0 40px #0ff2;
+      }
+
+      .card h3 {
+        color: #0ff;
+        margin-bottom: 10px;
+        font-size: 20px;
+      }
+
+      .card p {
+        color: #aaa;
+        font-size: 16px;
+      }
+
+      .ripple {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: rgba(0, 255, 255, 0.3);
+        transform: scale(0);
+        pointer-events: none;
+        z-index: 999;
+      }
+
+      .animate {
+        animation: rippleAnim 0.6s linear;
+      }
+
+      @keyframes rippleAnim {
+        to {
+          transform: scale(6);
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container h1 {
+          font-size: 2rem;
+        }
+        .card h3 {
+          font-size: 18px;
+        }
+        .card p {
+          font-size: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating Blob -->
+    <div class="blob" id="blob"></div>
+
+    <!-- Ripple Element -->
+    <div class="ripple" id="ripple"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">VISIONFLUX</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="experiments.html">Experiments</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- About Section -->
+    <div class="container">
+      <h1>Who We Are</h1>
+      <p>
+        We are a team of creators, developers, and dreamers building interfaces
+        that define tomorrow.
+      </p>
+
+      <div class="features">
+        <div
+          class="card"
+          onmousemove="hoverEffect(event)"
+          onmouseleave="resetEffect(event)"
+        >
+          <h3>Creative Coding</h3>
+          <p>
+            We bring imagination to life using animation, interactivity, and
+            futuristic web design.
+          </p>
+        </div>
+        <div
+          class="card"
+          onmousemove="hoverEffect(event)"
+          onmouseleave="resetEffect(event)"
+        >
+          <h3>UI/UX First</h3>
+          <p>
+            From concept to design — every interaction is tailored for a
+            seamless user experience.
+          </p>
+        </div>
+        <div
+          class="card"
+          onmousemove="hoverEffect(event)"
+          onmouseleave="resetEffect(event)"
+        >
+          <h3>Built for the Future</h3>
+          <p>
+            We use bleeding-edge tech to craft web 3.0-ready, scalable, and
+            stylish digital products.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS Section -->
+    <script>
+      // Floating Blob Follow
+      const blob = document.getElementById("blob");
+      document.addEventListener("mousemove", (e) => {
+        blob.style.transform = `translate(${e.clientX - 100}px, ${
+          e.clientY - 100
+        }px)`;
+      });
+
+      // Ripple Click Effect
+      const ripple = document.getElementById("ripple");
+      document.addEventListener("click", (e) => {
+        ripple.style.left = e.clientX + "px";
+        ripple.style.top = e.clientY + "px";
+        ripple.classList.remove("animate");
+        void ripple.offsetWidth;
+        ripple.classList.add("animate");
+      });
+
+      // 3D Tilt Hover (Optional on Card)
+      function hoverEffect(e) {
+        const card = e.currentTarget;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * 10;
+        const rotateY = ((x - centerX) / centerX) * -10;
+        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      }
+
+      function resetEffect(e) {
+        e.currentTarget.style.transform = "rotateX(0) rotateY(0)";
+      }
+    </script>
+  </body>
+</html>

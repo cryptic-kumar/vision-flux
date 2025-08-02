@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VISIONFLUX | Team</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, sans-serif;
+      }
+
+      body {
+        background: #080808;
+        color: #fff;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background: #111;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        background: linear-gradient(to right, #0ff, #f0f);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #ccc;
+        transition: 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #0ff;
+      }
+
+      .blob {
+        position: fixed;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 0, 255, 0.25),
+          transparent
+        );
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+        mix-blend-mode: overlay;
+        transition: transform 0.2s ease;
+      }
+
+      .ripple {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: rgba(0, 255, 255, 0.3);
+        transform: scale(0);
+        pointer-events: none;
+        z-index: 999;
+      }
+
+      .animate {
+        animation: rippleAnim 0.6s linear;
+      }
+
+      @keyframes rippleAnim {
+        to {
+          transform: scale(6);
+          opacity: 0;
+        }
+      }
+
+      .container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+        z-index: 2;
+        position: relative;
+      }
+
+      .rocket {
+        font-size: 70px;
+        animation: float 2.5s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      .coming {
+        margin-top: 20px;
+        font-size: 2.5rem;
+        font-weight: bold;
+        background: linear-gradient(to right, #0ff, #ff00ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: pulse 1.5s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.7;
+          transform: scale(1.05);
+        }
+      }
+
+      .btn-join {
+        margin-top: 30px;
+        padding: 12px 30px;
+        background: #0ff;
+        border: none;
+        border-radius: 30px;
+        color: #000;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 0 20px #0ff;
+        transition: 0.3s ease;
+      }
+
+      .btn-join:hover {
+        background: #fff;
+        color: #111;
+        box-shadow: 0 0 40px #0ff;
+      }
+
+      @media (max-width: 768px) {
+        .coming {
+          font-size: 2rem;
+        }
+        .rocket {
+          font-size: 50px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating Blob -->
+    <div class="blob" id="blob"></div>
+
+    <!-- Ripple Element -->
+    <div class="ripple" id="ripple"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">VISIONFLUX</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="experiments.html">Experiments</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Team Section -->
+    <div class="container">
+      <div class="rocket">🚀</div>
+      <div class="coming">Team Page Coming Soon</div>
+      <button class="btn-join" onclick="window.location.href='contact.html'">
+        Join Our Journey →
+      </button>
+    </div>
+
+    <!-- JS Script -->
+    <script>
+      // Floating Blob Follow
+      const blob = document.getElementById("blob");
+      document.addEventListener("mousemove", (e) => {
+        blob.style.transform = `translate(${e.clientX - 100}px, ${
+          e.clientY - 100
+        }px)`;
+      });
+
+      // Ripple Click Effect
+      const ripple = document.getElementById("ripple");
+      document.addEventListener("click", (e) => {
+        ripple.style.left = e.clientX + "px";
+        ripple.style.top = e.clientY + "px";
+        ripple.classList.remove("animate");
+        void ripple.offsetWidth;
+        ripple.classList.add("animate");
+      });
+    </script>
+  </body>
+</html>

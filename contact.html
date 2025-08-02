@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VISIONFLUX | Contact</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      body {
+        background: #0a0a0a;
+        color: #fff;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* Navbar */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background: #0f0f0f;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      .navbar .logo {
+        font-size: 28px;
+        background: linear-gradient(to right, #00ffff, #7f00ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
+      }
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: #ccc;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+      .nav-links a:hover {
+        color: #00ffff;
+      }
+
+      /* Floating Blob */
+      .blob {
+        position: fixed;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(
+          circle,
+          rgba(0, 255, 255, 0.3),
+          transparent
+        );
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+        mix-blend-mode: overlay;
+        transition: transform 0.2s ease;
+      }
+
+      /* Contact Section */
+      .contact-container {
+        max-width: 1200px;
+        margin: 60px auto;
+        padding: 0 20px;
+        position: relative;
+        z-index: 2;
+      }
+      .contact-container h1 {
+        text-align: center;
+        font-size: 48px;
+        margin-bottom: 10px;
+        background: linear-gradient(to right, #00ffff, #a500ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .contact-container p {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 50px;
+        color: #ccc;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+
+      .form-box,
+      .info-box {
+        background: #131313;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+      }
+
+      .form-box h2 {
+        margin-bottom: 20px;
+        color: #00ffff;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 5px;
+        background: #1e1e1e;
+        border: 1px solid #444;
+        color: #fff;
+        transition: 0.3s;
+      }
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #00ffff;
+        box-shadow: 0 0 8px #00ffff;
+      }
+
+      .form-box button {
+        margin-top: 10px;
+        width: 100%;
+        background: #00ffff;
+        color: #000;
+        font-weight: bold;
+        padding: 12px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .form-box button:hover {
+        background: #0ff;
+        box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+      }
+
+      .info-item {
+        margin-bottom: 30px;
+      }
+      .info-item h3 {
+        color: #00ffff;
+        margin-bottom: 8px;
+      }
+      .info-item p {
+        color: #ccc;
+      }
+
+      @media (max-width: 768px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Blob -->
+    <div class="blob" id="blob"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">VISIONFLUX</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="experiments.html">Experiments</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="contact-container">
+      <h1>Contact Us</h1>
+      <p>Ready to build the future with us? Reach out and let's collaborate.</p>
+
+      <div class="form-grid">
+        <!-- Form -->
+        <div class="form-box">
+          <h2>Let’s Build the Future</h2>
+          <form>
+            <input type="text" placeholder="First Name" required />
+            <input type="text" placeholder="Last Name" required />
+            <input type="email" placeholder="Your Email" required />
+            <input type="text" placeholder="Subject" />
+            <textarea rows="5" placeholder="Your Message"></textarea>
+            <button type="submit">Send Message 🚀</button>
+          </form>
+        </div>
+
+        <!-- Info -->
+        <div class="info-box">
+          <div class="info-item">
+            <h3>Email</h3>
+            <p>sahdityakumarr@gmail.com</p>
+          </div>
+          <div class="info-item">
+            <h3>Phone</h3>
+            <p>+91 90763 14509</p>
+          </div>
+          <div class="info-item">
+            <h3>Location</h3>
+            <p>Mumbai, India</p>
+          </div>
+          <div class="info-item">
+            <h3>Innovate With Us</h3>
+            <p>
+              We're available Mon–Fri, 9am–6pm IST. Let's turn imagination into
+              innovation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Floating Blob
+      const blob = document.getElementById("blob");
+      document.addEventListener("mousemove", (e) => {
+        blob.style.transform = `translate(${e.clientX - 100}px, ${
+          e.clientY - 100
+        }px)`;
+      });
+    </script>
+  </body>
+</html>
